@@ -135,9 +135,10 @@ const file_payment_payment_proto_rawDesc = "" +
 	"\x06amount\x18\x02 \x01(\x03R\x06amount\"P\n" +
 	"\x0fPaymentResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12%\n" +
-	"\x0etransaction_id\x18\x02 \x01(\tR\rtransactionId2Y\n" +
+	"\x0etransaction_id\x18\x02 \x01(\tR\rtransactionId2\xac\x01\n" +
 	"\x0ePaymentService\x12G\n" +
-	"\x0eProcessPayment\x12\x19.paymentpb.PaymentRequest\x1a\x1a.paymentpb.PaymentResponseB4Z2github.com/tolik-tachyon/proto-generated/paymentpbb\x06proto3"
+	"\x0eProcessPayment\x12\x19.paymentpb.PaymentRequest\x1a\x1a.paymentpb.PaymentResponse\x12Q\n" +
+	"\x16SubscribePaymentStatus\x12\x19.paymentpb.PaymentRequest\x1a\x1a.paymentpb.PaymentResponse0\x01B4Z2github.com/tolik-tachyon/proto-generated/paymentpbb\x06proto3"
 
 var (
 	file_payment_payment_proto_rawDescOnce sync.Once
@@ -158,9 +159,11 @@ var file_payment_payment_proto_goTypes = []any{
 }
 var file_payment_payment_proto_depIdxs = []int32{
 	0, // 0: paymentpb.PaymentService.ProcessPayment:input_type -> paymentpb.PaymentRequest
-	1, // 1: paymentpb.PaymentService.ProcessPayment:output_type -> paymentpb.PaymentResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	0, // 1: paymentpb.PaymentService.SubscribePaymentStatus:input_type -> paymentpb.PaymentRequest
+	1, // 2: paymentpb.PaymentService.ProcessPayment:output_type -> paymentpb.PaymentResponse
+	1, // 3: paymentpb.PaymentService.SubscribePaymentStatus:output_type -> paymentpb.PaymentResponse
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
