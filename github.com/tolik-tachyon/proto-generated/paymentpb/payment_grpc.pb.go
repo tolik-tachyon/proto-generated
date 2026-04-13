@@ -19,7 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	PaymentService_ProcessPayment_FullMethodName = "/payment.PaymentService/ProcessPayment"
+	PaymentService_ProcessPayment_FullMethodName = "/paymentpb.PaymentService/ProcessPayment"
 )
 
 // PaymentServiceClient is the client API for PaymentService service.
@@ -108,7 +108,7 @@ func _PaymentService_ProcessPayment_Handler(srv interface{}, ctx context.Context
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var PaymentService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "payment.PaymentService",
+	ServiceName: "paymentpb.PaymentService",
 	HandlerType: (*PaymentServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
