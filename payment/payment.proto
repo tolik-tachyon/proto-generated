@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package paymentpb;
+
+option go_package = "github.com/tolik-tachyon/proto-generated/paymentpb";
+
+service PaymentService {
+  rpc ProcessPayment (PaymentRequest) returns (PaymentResponse);
+
+  rpc SubscribePaymentStatus (PaymentRequest) returns (stream PaymentResponse);
+}
+
+message PaymentRequest {
+  string order_id = 1;
+  int64 amount = 2;
+}
+
+message PaymentResponse {
+  string status = 1;
+  string transaction_id = 2;
+}
