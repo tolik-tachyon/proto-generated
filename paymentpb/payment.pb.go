@@ -9,6 +9,7 @@ package paymentpb
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -77,6 +78,7 @@ type PaymentResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Status        string                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
 	TransactionId string                 `protobuf:"bytes,2,opt,name=transaction_id,json=transactionId,proto3" json:"transaction_id,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -123,6 +125,13 @@ func (x *PaymentResponse) GetTransactionId() string {
 		return x.TransactionId
 	}
 	return ""
+}
+
+func (x *PaymentResponse) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
 }
 
 type ListPaymentRequest struct {
@@ -217,13 +226,15 @@ var File_payment_proto protoreflect.FileDescriptor
 
 const file_payment_proto_rawDesc = "" +
 	"\n" +
-	"\rpayment.proto\x12\tpaymentpb\"C\n" +
+	"\rpayment.proto\x12\tpaymentpb\x1a\x1fgoogle/protobuf/timestamp.proto\"C\n" +
 	"\x0ePaymentRequest\x12\x19\n" +
 	"\border_id\x18\x01 \x01(\tR\aorderId\x12\x16\n" +
-	"\x06amount\x18\x02 \x01(\x03R\x06amount\"P\n" +
+	"\x06amount\x18\x02 \x01(\x03R\x06amount\"\x8b\x01\n" +
 	"\x0fPaymentResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12%\n" +
-	"\x0etransaction_id\x18\x02 \x01(\tR\rtransactionId\",\n" +
+	"\x0etransaction_id\x18\x02 \x01(\tR\rtransactionId\x129\n" +
+	"\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\",\n" +
 	"\x12ListPaymentRequest\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\"M\n" +
 	"\x13ListPaymentResponse\x126\n" +
@@ -247,24 +258,26 @@ func file_payment_proto_rawDescGZIP() []byte {
 
 var file_payment_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_payment_proto_goTypes = []any{
-	(*PaymentRequest)(nil),      // 0: paymentpb.PaymentRequest
-	(*PaymentResponse)(nil),     // 1: paymentpb.PaymentResponse
-	(*ListPaymentRequest)(nil),  // 2: paymentpb.ListPaymentRequest
-	(*ListPaymentResponse)(nil), // 3: paymentpb.ListPaymentResponse
+	(*PaymentRequest)(nil),        // 0: paymentpb.PaymentRequest
+	(*PaymentResponse)(nil),       // 1: paymentpb.PaymentResponse
+	(*ListPaymentRequest)(nil),    // 2: paymentpb.ListPaymentRequest
+	(*ListPaymentResponse)(nil),   // 3: paymentpb.ListPaymentResponse
+	(*timestamppb.Timestamp)(nil), // 4: google.protobuf.Timestamp
 }
 var file_payment_proto_depIdxs = []int32{
-	1, // 0: paymentpb.ListPaymentResponse.payments:type_name -> paymentpb.PaymentResponse
-	0, // 1: paymentpb.PaymentService.ProcessPayment:input_type -> paymentpb.PaymentRequest
-	0, // 2: paymentpb.PaymentService.SubscribePaymentStatus:input_type -> paymentpb.PaymentRequest
-	2, // 3: paymentpb.PaymentService.ListPayment:input_type -> paymentpb.ListPaymentRequest
-	1, // 4: paymentpb.PaymentService.ProcessPayment:output_type -> paymentpb.PaymentResponse
-	1, // 5: paymentpb.PaymentService.SubscribePaymentStatus:output_type -> paymentpb.PaymentResponse
-	3, // 6: paymentpb.PaymentService.ListPayment:output_type -> paymentpb.ListPaymentResponse
-	4, // [4:7] is the sub-list for method output_type
-	1, // [1:4] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	4, // 0: paymentpb.PaymentResponse.updated_at:type_name -> google.protobuf.Timestamp
+	1, // 1: paymentpb.ListPaymentResponse.payments:type_name -> paymentpb.PaymentResponse
+	0, // 2: paymentpb.PaymentService.ProcessPayment:input_type -> paymentpb.PaymentRequest
+	0, // 3: paymentpb.PaymentService.SubscribePaymentStatus:input_type -> paymentpb.PaymentRequest
+	2, // 4: paymentpb.PaymentService.ListPayment:input_type -> paymentpb.ListPaymentRequest
+	1, // 5: paymentpb.PaymentService.ProcessPayment:output_type -> paymentpb.PaymentResponse
+	1, // 6: paymentpb.PaymentService.SubscribePaymentStatus:output_type -> paymentpb.PaymentResponse
+	3, // 7: paymentpb.PaymentService.ListPayment:output_type -> paymentpb.ListPaymentResponse
+	5, // [5:8] is the sub-list for method output_type
+	2, // [2:5] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_payment_proto_init() }
